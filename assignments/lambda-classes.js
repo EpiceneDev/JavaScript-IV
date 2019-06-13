@@ -25,9 +25,9 @@ class Instructors extends Person {
         this.catchPhrase = attr.catchPhrase;
     }
     demo(subject) {
-        return 'Today we are learning about {subject}'
+        return `Today we are learning about ${subject}.`
     }
-    grade(this.name, subject) {
+    grade(student, subject) {
         return `${student.name} receives a perfect score on ${subject}`
     }
 }
@@ -80,16 +80,16 @@ class Student extends Person {
         super(attr);
         this.previousBackground = attr.previousBackground;
         this.className = attr. className;
-        this.favSubjects = attr.favSubjects[]
+        this.favSubjects = attr.favSubjects
     }
-    listsSubjects(attr) {
-        return 'These are my favorite subjects: 1. ${this.favSubjects[0]}, 2. ${favSubjects[1]}, 3. ${favSubjects[2]}'
+    listsSubjects() {
+        this.favSubjects.forEach(element => console.log(element));
     }
     PRAssignment(subject) {
         return `${this.name} has submitted a PR for ${subject}`
     }
     sprintChallenge(subject) {
-        returns `${this.name} has submitted a PR for ${subject}`
+        returns `${this.name} has begun sprint challenge on ${subject}`
     }
 }
 
@@ -103,22 +103,31 @@ class Student extends Person {
 // * ProjectManagers have the following Methods:
 //   * `standUp` a method that takes in a slack channel and logs `{name} announces to {channel}, @channel standy times!​​​​​
 //   * `debugsCode` a method that takes in a student object and a subject and logs out `{name} debugs {student.name}'s code on {subject}`
+
 class ProjectManagers extends Instructors {
     constructor(attr) {
         super(attr);
         this.gradClassName = attr.gradClassName,
         this.favInstructor = attr.favInstructor
         }
-    standUp(attr) {
-        return 'These are my favorite subjects: 1. ${this.favSubjects[0]}, 2. ${favSubjects[1]}, 3. ${favSubjects[2]}'
+    standUp(channel) {
+        return `${this.name} announces to ${channel}, @channel standy times!​​​​​`
     }
-    debugsCode(subject) {
-        return `${this.name} has submitted a PR for ${subject}`
-    }
-    sprintChallenge(subject) {
-        returns `${this.name} has submitted a PR for ${subject}`
+    debugsCode(student, subject) {
+        return `${this.name} debugs ${student.name}'s code on ${subject}`
     }
 }
+
+const andrew = new Student({
+    name: 'Andrew',
+    age: 18,
+    location: 'Texas',
+    previousBackground: 'High School Comp Sci',
+    className: 'Web21',
+    favSubjects: ['Angular', 'Javascript', 'CSS'],
+    grade: Math.floor(Math.random() * 101) + 1,
+});
+andrew.listsSubjects();
 
 // #### Stretch Problem
 
