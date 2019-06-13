@@ -22,37 +22,39 @@ class GameObject {
     constructor(attributes) {
         this.createdAt =  attributes.createdAt,
         this.name = attributes.name,
-        this.dimensions = attributes.weight
+        this.dimensions = attributes.dimensions
     }
-    destroy() {
+    destroy(attributes) {
         return `${this.name} was removed from the game.`;
     }  
 }
 
-function CharacterStats(attributes) {
-  GameObject.call(this, attributes);
-  this.healthPoints = attributes.healthPoints;
+
+class CharacterStats extends GameObject {
+    constructor(attributes) {
+        super(attributes);
+        this.healthPoints = attributes.healthPoints;
+    }
+    takeDamage(attributes) {
+        return `${this.name} took damage.`;
+    };
 }
 
-CharacterStats.prototype = Object.create(GameObject.prototype);
-CharacterStats.prototype.takeDamage = function() {
-  return `${this.name} took damage.`;
-};
 
 
-
-function Humanoid(attributes) {
-  CharacterStats.call(this, attributes);
-    this.team = attributes.team;
-    this.weapons = attributes.weapons;
-    this.language = attributes.language;
+class Humanoid extends CharacterStats {
+    constructor(attributes) {
+        super(attributes);
+        this.team = attributes.team;
+        this.weapons = attributes.weapons;
+        this.language = attributes.language;
+    }
+    greet(attributes) {
+        return `${this.name} offers a greeting in ${this.language}.`;
+    } 
 }
 
-Humanoid.prototype = Object.create(CharacterStats.prototype);
-Humanoid.prototype.greet = function() {
-  return `${this.name} offers a greeting in ${this.language}.`;
-};
- 
+
 
 
 const mage = new Humanoid({
