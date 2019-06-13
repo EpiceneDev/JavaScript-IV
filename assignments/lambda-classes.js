@@ -5,6 +5,33 @@
 //   * **Project Managers** - extensions of Instructors
 // * **IMPORTANT** - You'll need to create 2 - 3 objects for each class and test them according to their unique Attributes. For example:
 
+class Person {
+    constructor(attr) {
+        this.name = attr.name,
+        this.age = attr.age,
+        this.location = attr.location
+        
+    }
+    speak(attr) {
+        return `Hello my name is ${this.name}, I am from ${this.location}`;
+    }
+}
+
+class Instructors extends Person {
+    constructor(attr) {
+        super(attr);
+        this.specialty = attr.specialty;
+        this.favLanguage = attr.favLanguage;
+        this.catchPhrase = attr.catchPhrase;
+    }
+    demo(subject) {
+        return 'Today we are learning about {subject}'
+    }
+    grade(this.name, subject) {
+        return `${student.name} receives a perfect score on ${subject}`
+    }
+}
+
 // ```js
 // const fred = new Instructor({
 //   name: 'Fred',
@@ -47,6 +74,19 @@
 //   * `listsSubjects` a method that logs out all of the student's favoriteSubjects one by one.
 //   * `PRAssignment` a method that receives a subject as an argument and logs out that the `student.name has submitted a PR for {subject}`
 //   * `sprintChallenge` similar to PRAssignment but logs out `student.name has begun sprint challenge on {subject}`
+
+class Student extends Person {
+    constructor(attr) {
+        super(attr);
+        this.previousBackground = 
+    }
+    demo(subject) {
+        return 'Today we are learning about {subject}'
+    }
+    grade(student.name, subject) {
+        return '{student.name} receives a perfect score on {subject}'
+    }
+}
 
 // #### Project Manager
 
